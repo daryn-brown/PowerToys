@@ -808,7 +808,7 @@ namespace Microsoft.PowerToys.Settings.UI.Views
             {
                 var provider = FoundryLocalModelProvider.Instance;
 
-                var isAvailable = await provider.IsAvailable();
+                var isAvailable = await provider.IsAvailable(cancellationToken);
                 if (cancellationToken.IsCancellationRequested)
                 {
                     return;

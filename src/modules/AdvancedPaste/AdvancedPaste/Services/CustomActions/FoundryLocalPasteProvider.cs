@@ -37,7 +37,7 @@ public sealed class FoundryLocalPasteProvider : IPasteAIProvider
     public async Task<bool> IsAvailableAsync(CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
-        return await FoundryLocalModelProvider.Instance.IsAvailable().ConfigureAwait(false);
+        return await FoundryLocalModelProvider.Instance.IsAvailable(cancellationToken).ConfigureAwait(false);
     }
 
     public async Task<string> ProcessPasteAsync(PasteAIRequest request, CancellationToken cancellationToken, IProgress<double> progress)
@@ -77,7 +77,8 @@ public sealed class FoundryLocalPasteProvider : IPasteAIProvider
             IChatClient chatClient;
             try
             {
-                chatClient = _modelProvider.GetIChatClient(modelReference);
+                chatClient = await _modelProvider.GetIChatClientAsync(modelReference, cancellationToken).ConfigureAwait(false)
+                    ?? throw new InvalidOperationException("Foundry Local did not create a chat client.");
             }
             catch (InvalidOperationException ex)
             {
