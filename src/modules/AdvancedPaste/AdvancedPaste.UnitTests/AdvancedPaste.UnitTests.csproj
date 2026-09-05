@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdvancedPaste\AdvancedPaste.csproj" />
+    <ProjectReference Include="..\..\..\common\LanguageModelProvider\LanguageModelProvider.csproj" />
   </ItemGroup>
 
 </Project>

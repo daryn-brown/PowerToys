@@ -17,4 +17,10 @@
   <ItemGroup>
     <ProjectReference Include="..\ManagedCommon\ManagedCommon.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>AdvancedPaste.UnitTests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>
