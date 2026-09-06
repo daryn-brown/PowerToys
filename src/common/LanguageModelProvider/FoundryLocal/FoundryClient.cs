@@ -393,7 +393,7 @@ internal sealed class FoundryClient : IDisposable
             serviceClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        if (!serviceClient.DefaultRequestHeaders.UserAgent.Any())
+        if (serviceClient.DefaultRequestHeaders.UserAgent.Count == 0)
         {
             var version = typeof(FoundryClient).Assembly.GetName().Version?.ToString() ?? "unknown";
             serviceClient.DefaultRequestHeaders.UserAgent.ParseAdd($"PowerToys-AdvancedPaste/{version}");

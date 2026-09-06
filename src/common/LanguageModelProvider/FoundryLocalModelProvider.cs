@@ -12,7 +12,7 @@ namespace LanguageModelProvider;
 
 public sealed class FoundryLocalModelProvider : ILanguageModelProvider
 {
-    private readonly SemaphoreSlim _initializationLock = new(1, 1);
+    private static readonly SemaphoreSlim _initializationLock = new(1, 1);
     private FoundryClient? _foundryClient;
     private IEnumerable<FoundryCatalogModel>? _catalogModels;
     private string? _serviceUrl;
